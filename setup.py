@@ -1,40 +1,42 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
-def setup(c, variant, samecolorrows = False):
+def setup(c, variant, samecolorrows=False):
     # Palette {{{
     palette = {}
     if variant == "rose-pine":
         palette = {
-            "Base": "#191724",
-            "Surface": "#1f1d2e",
-            "Overlay": "#26233a",
-            "Muted": "#6e6a86",	
-            "Subtle": "#908caa",	
-            "Text": "#e0def4",	
-            "Love": "#eb6f92",	
-            "Gold": "#f6c177",	
-            "Rose": "#ebbcba",	
-            "Pine": "#31748f",	
-            "Foam": "#9ccfd8",	
-            "Iris": "#c4a7e7",	
-            "HighlightLow": "#21202e",	
-            "HighlightMed": "#403d52",	
+            "Base": "#1c1c1d",
+            "Surface": "#262626",
+            "Overlay": "#303030",
+            "Muted": "#5f5f87",
+            "Subtle": "#8787af",
+            "Text": "#d7d7ff",
+            "Love": "#ff5f87",
+            "Gold": "#ffaf87",
+            "Rose": "#ffafaf",
+            "Pine": "#5f8787",
+            "Foam": "#afd7d7",
+            "Iris": "#d7afd7",
+            "Leaf": "#95b1ac",
+            "HighlightLow": "#21202e",
+            "HighlightMed": "#403d52",
             "HighlightHigh": "#524f67",
         }
     elif variant == "rose-pine-moon":
         palette = {
-            "Base": "#232136",
-            "Surface": "#2a273f",
-            "Overlay": "#393552",
-            "Muted": "#6e6a86",
-            "Subtle": "#908caa",
+            "Base": "#1c1c1d",
+            "Surface": "#262626",
+            "Overlay": "#303030",
+            "Muted": "#5f5f87",
+            "Subtle": "#8787af",
             "Text": "#e0def4",
-            "Love": "#eb6f92",
-            "Gold": "#f6c177",
-            "Rose": "#ea9a97",
-            "Pine": "#3e8fb0",
-            "Foam": "#9ccfd8",
-            "Iris": "#c4a7e7",
+            "Love": "#ff5f87",
+            "Gold": "#ffaf87",
+            "Rose": "#c57c7c",
+            "Pine": "#5f87af",
+            "Foam": "#afd7d7",
+            "Iris": "#d7afd7",
+            "Leaf": "#95b1ac",
             "HighlightLow": "#2a283e",
             "HighlightMed": "#44415a",
             "HighlightHigh": "#56526e",
@@ -46,35 +48,43 @@ def setup(c, variant, samecolorrows = False):
             "Overlay": "#f2e9e1",
             "Muted": "#9893a5",
             "Subtle": "#797593",
-            "Text": "#575279",
+            "Text": "#464261",
             "Love": "#b4637a",
             "Gold": "#ea9d34",
             "Rose": "#d7827e",
             "Pine": "#286983",
             "Foam": "#56949f",
             "Iris": "#907aa9",
+            "Leaf": "#6d8f89",
             "HighlightLow": "#f4ede8",	
             "HighlightMed": "#dfdad9",	
             "HighlightHigh": "#cecacd",
         }
     else:
         palette = {
-            "Base": "#191724",	
-            "Surface": "#1f1d2e",	
-            "Overlay": "#26233a",	
-            "Muted": "#6e6a86",	
-            "Subtle": "#908caa",	
-            "Text": "#e0def4",	
-            "Love": "#eb6f92",	
-            "Gold": "#f6c177",	
-            "Rose": "#ebbcba",	
-            "Pine": "#31748f",	
-            "Foam": "#9ccfd8",	
-            "Iris": "#c4a7e7",	
+            "Base": "#1c1c1d",	
+            "Surface": "#262626",	
+            "Overlay": "#303030",	
+            "Muted": "#5f5f87",	
+            "Subtle": "#8787af",	
+            "Text": "#d7d7ff",	
+            "Love": "#ff5f87",	
+            "Gold": "#ffaf87",	
+            "Rose": "#ffafaf",	
+            "Pine": "#5f8787",	
+            "Foam": "#afd7d7",	
+            "Iris": "#d7afd7",	
+            "Leaf": "#95b1ac",	
             "HighlightLow": "#21202e",	
             "HighlightMed": "#403d52",	
             "HighlightHigh": "#524f67",
         }
+    # }}}
+
+    # Fonts {{{
+    ## Font family used by every font group that does not specify its own family
+    ## (statusbar, completion, tabs, hints, keyhints, webpages).
+    c.fonts.default_family = "JetBrains Mono"
     # }}}
 
     # Completion {{{
@@ -85,25 +95,21 @@ def setup(c, variant, samecolorrows = False):
     ## Top border color of the completion widget category headers.
     c.colors.completion.category.border.top = palette["Overlay"]
     ## Foreground color of completion widget category headers.
-    c.colors.completion.category.fg = palette["Love"]
+    c.colors.completion.category.fg = palette["Muted"]
     ## Background color of the completion widget for even and odd rows.
-    if samecolorrows:
-        c.colors.completion.even.bg = palette["HighlightLow"]
-        c.colors.completion.odd.bg = c.colors.completion.even.bg
-    else:
-        c.colors.completion.even.bg = palette["HighlightLow"]
-        c.colors.completion.odd.bg = palette["HighlightMed"]
+    c.colors.completion.even.bg = palette["Base"]
+    c.colors.completion.odd.bg = palette["Base"]
     ## Text color of the completion widget.
     c.colors.completion.fg = palette["Text"]
 
     ## Background color of the selected completion item.
-    c.colors.completion.item.selected.bg = palette["HighlightMed"]
+    c.colors.completion.item.selected.bg = palette["Overlay"]
     ## Bottom border color of the selected completion item.
     c.colors.completion.item.selected.border.bottom = palette["Surface"]
     ## Top border color of the completion widget category headers.
     c.colors.completion.item.selected.border.top = palette["Surface"]
     ## Foreground color of the selected completion item.
-    c.colors.completion.item.selected.fg = palette["Text"]
+    c.colors.completion.item.selected.fg = palette["Love"]
     ## Foreground color of the selected completion item.
     c.colors.completion.item.selected.match.fg = palette["Rose"]
     ## Foreground color of the matched text in the completion.
@@ -154,6 +160,29 @@ def setup(c, variant, samecolorrows = False):
 
     ## Foreground color of the URL in the statusbar when there's a warning.
     c.colors.statusbar.url.warn.fg = palette["Gold"]
+
+    ## rose-pine-moon overrides: Pine background with dark grey text.
+    if variant == "rose-pine-moon":
+        c.colors.statusbar.normal.bg = palette["Pine"]
+        c.colors.statusbar.insert.bg = palette["Pine"]
+        c.colors.statusbar.command.bg = palette["Pine"]
+        c.colors.statusbar.caret.bg = palette["Pine"]
+        c.colors.statusbar.caret.selection.bg = palette["Pine"]
+        c.colors.statusbar.passthrough.bg = palette["Pine"]
+        c.colors.statusbar.private.bg = palette["Pine"]
+
+        c.colors.statusbar.normal.fg = palette["Base"]
+        c.colors.statusbar.insert.fg = palette["Base"]
+        c.colors.statusbar.command.fg = palette["Base"]
+        c.colors.statusbar.caret.fg = palette["Base"]
+        c.colors.statusbar.caret.selection.fg = palette["Base"]
+        c.colors.statusbar.passthrough.fg = palette["Base"]
+        c.colors.statusbar.private.fg = palette["Base"]
+
+        ## URL text is dark on the Pine background; errors and warnings stay bright.
+        c.colors.statusbar.url.fg = palette["Base"]
+        c.colors.statusbar.url.success.http.fg = palette["Base"]
+        c.colors.statusbar.url.success.https.fg = palette["Base"]
     # }}}
 
     # Tabs {{{
@@ -167,8 +196,8 @@ def setup(c, variant, samecolorrows = False):
     c.colors.tabs.odd.fg = palette["Subtle"]
 
     # Background color of the selected tab.
-    c.colors.tabs.selected.even.bg = palette["HighlightMed"]
-    c.colors.tabs.selected.odd.bg = palette["HighlightMed"]
+    c.colors.tabs.selected.even.bg = palette["Overlay"]
+    c.colors.tabs.selected.odd.bg = palette["Overlay"]
 
     # Foreground color of the selected tab.
     c.colors.tabs.selected.even.fg = palette["Text"]
@@ -181,13 +210,13 @@ def setup(c, variant, samecolorrows = False):
     
     # Pinned tabs
     c.colors.tabs.pinned.even.fg = palette["Subtle"]
-    c.colors.tabs.pinned.even.bg = palette["Overlay"]
+    c.colors.tabs.pinned.even.bg = palette["Base"]
     c.colors.tabs.pinned.odd.fg = palette["Subtle"]
-    c.colors.tabs.pinned.odd.bg = palette["Overlay"]
+    c.colors.tabs.pinned.odd.bg = palette["Base"]
     c.colors.tabs.pinned.selected.even.fg = palette["Text"]
-    c.colors.tabs.pinned.selected.even.bg = palette["HighlightMed"]
+    c.colors.tabs.pinned.selected.even.bg = palette["Overlay"]
     c.colors.tabs.pinned.selected.odd.fg = palette["Text"]
-    c.colors.tabs.pinned.selected.odd.bg = palette["HighlightMed"]
+    c.colors.tabs.pinned.selected.odd.bg = palette["Overlay"]
     
     # }}}
 
